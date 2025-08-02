@@ -1,0 +1,67 @@
+# Local paths - SANITIZED VERSION
+# Replace these paths with your actual paths
+code: "./"  # Script location
+data: "./data"  # Data directory
+
+# Data subdirectories (relative to data location)
+data_dirs:
+  stock: 'tickerhistory'
+  options: 'surfacecurvehist'
+
+# Cloud storage - SANITIZED VERSION
+# Replace with your actual GCS bucket and credentials
+gcs:
+  output:  # Results storage
+    bucket_name: "YOUR_GCS_BUCKET_NAME"  # Replace with your bucket
+    base_path: "SR_Options_Data"  # Base path for all SR options data
+
+# Active environment setting
+active_environment: "local"
+config_dir: "./"
+
+params:
+  _HUBER_TOL: 0.0001                       # Tolerance for Huber regression
+  first_good_beta_date: "2007-05-01"       # combo of params above to get first good beta date
+  bucket_name: "YOUR_GCS_BUCKET_NAME"      # Replace with your bucket
+  etf_list: ['SPY', 'XLB', 'XLC', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLRE', 'XLU', 'XLV', 'XLY']
+
+paths:
+  stock_universe: 
+    zarr: './data/stock_data/zarr/ds_daily.zarr'  # Replace with your path
+  options:
+    zip_input: 'surfacecurvehist/zips'
+    zarr_output: 'surfacecurvehist/zarr'
+  stock:
+    zip_input: 'tickerhistory/zips'
+    zarr_output: 'tickerhistory/zarr'
+
+# Datasets configuration - SANITIZED VERSION
+# Replace AWS credentials and bucket names with your own
+datasets:
+  process_list: [surfacecurvehist]
+
+  surfacecurvehist:
+    name: "Surface Curve History"
+    enabled: True
+    incoming_date_dim: "tradingDate"
+    incoming_ticker_dim: "ticker_tk"
+    bucket: "YOUR_AWS_BUCKET_NAME"  # Replace with your AWS bucket
+    path: "srdata_hist/v2.00/options_equities/surfacecurvehist"
+    append_to_zarr: false
+    download_mode: "date_range"  # Options: "most_recent" or "date_range"
+    start_date: "2024-01-01"     # Last 1 year of data
+    end_date: "TODAY"            # Will be dynamically replaced with today's date
+    keep_data_vars: ["ticker_tk", "tradingDate", "rate", "years", "atmVol", "atmCen", "atmVega","slope","cCnt","pCnt","vwidth"]
+
+  tbltickerhistory3_10y:
+    name: "Ticker History (Legacy)"
+    enabled: True
+    incoming_date_dim: "tradingDate"
+    incoming_ticker_dim: "ticker_tk"
+    bucket: "YOUR_AWS_BUCKET_NAME"  # Replace with your AWS bucket
+    path: "srdata_hist/v2.00/tickerHistory"
+    append_to_zarr: false
+    download_mode: "date_range"  # Options: "most_recent" or "date_range"
+    start_date: "2024-01-01"     # Last 1 year of data
+    end_date: "TODAY"            # Will be dynamically replaced with today's date
+    keep_data_vars: ['tradingDate', 'ticker_tk','close','volume','totalReturn'] 

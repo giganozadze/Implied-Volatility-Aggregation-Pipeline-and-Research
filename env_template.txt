@@ -1,0 +1,10 @@
+# AWS Credentials - SANITIZED VERSION
+# Replace with your actual AWS credentials
+AWS_ACCESS_KEY_ID=your_aws_access_key_id_here
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key_here
+
+# Google Cloud Storage Credentials (if using GCS)
+# GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account-key.json
+
+# Optional: Set AWS region if needed
+# AWS_DEFAULT_REGION=us-east-1 
