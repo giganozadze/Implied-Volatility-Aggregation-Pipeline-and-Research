@@ -3,7 +3,7 @@
 Memory-efficient surface curve history ZIP to Zarr converter - SANITIZED VERSION
 
 This script converts ZIP files in the surfacecurvehist/zips directory into a single
-Zarr dataset with a flat structure where teo, ticker, and years are data variables.
+Zarr dataset with a flat structure.
 
 Key features:
 - Processes files in small batches to manage memory
@@ -303,4 +303,5 @@ def get_sorted_zip_files():
     return sorted(zip_files)
 
 if __name__ == "__main__":
+
     main() 
