@@ -1,6 +1,6 @@
 # SpiderRock Options Data Pipeline - Sanitized Repository
 
-This repository contains a complete pipeline for downloading, processing, and analyzing SpiderRock options implied volatility data. The pipeline is designed to work with the last 1 year of data for personal use.
+This repository contains a complete pipeline for downloading, processing, and analyzing SpiderRock options implied volatility data. The pipeline is designed to work with the last 1.5 year of data for personal use.
 
 ## Overview
 
@@ -103,11 +103,11 @@ The main configuration file contains:
 - **AWS Settings**: S3 bucket names and data paths
 - **GCS Settings**: Google Cloud Storage configuration
 - **Data Processing**: Parameters for IV calculation and aggregation
-- **Date Ranges**: Currently set to last 1 year of data
+- **Date Ranges**: Currently set to last 1.5 year of data
 
 ### Key Parameters
 
-- `start_date`: "2024-01-01" (last 1 year)
+- `start_date`: "2024-01-01" (last 1.5 year)
 - `end_date`: "TODAY" (automatically updated)
 - `download_mode`: "date_range" (download specific date range)
 - `keep_data_vars`: List of columns to retain from source data
@@ -116,7 +116,7 @@ The main configuration file contains:
 
 ### Step 1: Download (1_download_zips.py)
 - Downloads ZIP files from SpiderRock AWS S3
-- Filters by date range (last 1 year)
+- Filters by date range (last 1.5 year)
 - Supports incremental downloads (only new files)
 - Progress tracking and error handling
 
@@ -207,7 +207,7 @@ The main configuration file contains:
 ## Data Privacy
 
 This repository is configured for personal use with:
-- Last 1 year of data only
+- Last 1.5 year of data only
 - Sanitized configuration files
 - No sensitive credentials included
 - Placeholder bucket names
@@ -230,4 +230,5 @@ This is a personal repository. For modifications:
 1. Update configuration files as needed
 2. Test with small data samples first
 3. Ensure all paths are relative or configurable
+
 4. Document any changes to data processing logic 
