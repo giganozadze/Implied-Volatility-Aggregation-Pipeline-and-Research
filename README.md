@@ -1,4 +1,4 @@
-# SpiderRock Options Data Pipeline - Sanitized Repository
+# SpiderRock Options Data Pipeline
 
 This repository contains a complete pipeline for downloading, processing, and analyzing SpiderRock options implied volatility data. The pipeline is designed to work with the last 1.5 year of data for personal use.
 
@@ -232,3 +232,4 @@ This is a personal repository. For modifications:
 3. Ensure all paths are relative or configurable
 
 4. Document any changes to data processing logic 
+
